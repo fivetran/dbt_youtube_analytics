@@ -1,0 +1,21 @@
+name: 'youtube_integration_tests'
+version: '0.1.0'
+profile: 'integration_tests'
+config-version: 2
+
+vars:
+  youtube_source:
+    channel_basic: "{{ ref('youtube_channel_basic_data') }}"
+
+seeds:
+  youtube_integration_tests:
+    youtube_channel_basic_data:
+      +column_types:
+        annotation_click_through_rate: "{{ 'float64' if target.name == 'bigquery' else 'float' }}"
+        annotation_close_rate: "{{ 'float64' if target.name == 'bigquery' else 'float' }}"
+        average_view_duration_percentage: "{{ 'float64' if target.name == 'bigquery' else 'float' }}"
+        average_view_duration_seconds: "{{ 'float64' if target.name == 'bigquery' else 'float' }}"
+        card_click_rate: "{{ 'float64' if target.name == 'bigquery' else 'float' }}"
+        card_teaser_click_rate: "{{ 'float64' if target.name == 'bigquery' else 'float' }}"
+        red_watch_time_minutes: "{{ 'float64' if target.name == 'bigquery' else 'float' }}"
+        watch_time_minutes:  "{{ 'float64' if target.name == 'bigquery' else 'float' }}"

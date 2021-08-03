@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: youtube__video_report
+    columns:
+      - name: daily_video_id
+        tests: 
+          - not_null
+          - unique
