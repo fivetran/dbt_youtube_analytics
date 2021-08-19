@@ -7,6 +7,48 @@ models:
         tests: 
           - not_null
           - unique
+      - name: date_day
+        description: The date the video was viewed
+      - name: video_id
+        description: Unique ID of the video
+      - name: channel_id
+        description: Unique identifier of the video channel
+      - name: video_title
+        description: Title of the video
+      - name: video_description
+        description: Description of the video
+      - name: channel_title
+        description: Title of the channel
+      - name: published_at
+        description: Timestamp of when the video was published
+      - name: default_thumbnail_url
+        description: The default thumbnail url
+      - name: medium_thumbnail_url
+        description: The medium quality thumbnail url
+      - name: high_thumbnail_url
+        description: The high quality thumbnail url
+      - name: average_view_duration_percentage
+        description: Average duration of views represented as a percent of the entire length of the video 
+      - name: average_view_duration_seconds
+        description: Average duration of views for the video in seconds
+      - name: comments
+        description: Total number of comment posted on the video
+      - name: dislikes
+        description: Total number of dislikes attributed to the video
+      - name: likes
+        description: Total number of likes attributed to the video
+      - name: shares
+        description: Total number of times the video was shared
+      - name: subscribers_gained
+        description: Total subscribers gained from the video
+      - name: subscribers_lost
+        description: Total subscribers lost from the video
+      - name: views
+        description: Total number of views the video received
+      - name: watch_time_minutes
+        description: Total watch time in minutes the video received
+      - name: video_duration_seconds
+        description: The total duration of the video in seconds
 
   - name: youtube__age_demographics_pivot
     tests:
@@ -14,6 +56,35 @@ models:
           combination_of_columns:
             - date_day
             - video_id
+    columns:
+      - name: date_day
+        description: The date the video was viewed
+      - name: video_id
+        description: Unique ID of the video
+      - name: video_title
+        description: Title of the video
+      - name: video_description
+        description: Description of the video
+      - name: video_published_at
+        description: Timestamp of when the video was published
+      - name: channel_title
+        description: The channel title
+      - name: default_thumbnail_url
+        description: The default thumbnail url
+      - name: AGE_25_34
+        description: Total number of views percent attributed to the age range 25 - 34 years old
+      - name: AGE_35_44
+        description: Total number of views percent attributed to the age range 35 - 44 years old
+      - name: AGE_45_54
+        description: Total number of views percent attributed to the age range 45 - 54 years old
+      - name: AGE_18_24
+        description: Total number of views percent attributed to the age range 18 - 24 years old
+      - name: AGE_65_
+        description: Total number of views percent attributed to the age range 65 years and older
+      - name: AGE_55_64
+        description: Total number of views percent attributed to the age range 55 - 64 years old
+      - name: AGE_13_17
+        description: Total number of views percent attributed to the age range 13 - 17 years old
 
   - name: youtube__demographics_report
     tests:
@@ -24,6 +95,33 @@ models:
             - age_group
             - country_code
             - gender
+    columns:
+      - name: date_day
+        description: The date the video was viewed
+      - name: video_id
+        description: Unique ID of the video
+      - name: video_title
+        description: Title of the video
+      - name: video_description
+        description: Description of the video
+      - name: video_published_at
+        description: Timestamp of when the video was published
+      - name: channel_title
+        description: The channel title
+      - name: default_thumbnail_url
+        description: The default thumbnail url
+      - name: medium_thumbnail_url
+        description: The medium quality thumbnail url
+      - name: high_thumbnail_url
+        description: The high quality thumbnail url
+      - name: age_group
+        description: The age group the individual. Ranges follow the format of 'AGE_[min age]_[max age]'
+      - name: country_code
+        description: Country code where the individual who watched the video is located
+      - name: gender
+        description: Gender of the user who watched the video. Either 'MALE', 'FEMALE', or 'GENDER_OTHER'
+      - name: views_percentage
+        description: Total percent of views the user makes up for the video
 
   - name: youtube__gender_demographics_pivot
     tests:
@@ -31,6 +129,27 @@ models:
           combination_of_columns:
             - date_day
             - video_id
+    columns:
+      - name: date_day
+        description: The date the video was viewed
+      - name: video_id
+        description: Unique ID of the video
+      - name: video_title
+        description: Title of the video
+      - name: video_description
+        description: Description of the video
+      - name: video_published_at
+        description: Timestamp of when the video was published
+      - name: channel_title
+        description: The channel title
+      - name: default_thumbnail_url
+        description: The default thumbnail url
+      - name: MALE
+        description: Total number of views percent attributed to the viewers who identify as male
+      - name: FEMALE
+        description: Total number of views percent attributed to the viewers who identify as female
+      - name: GENDER_OTHER
+        description: Total number of views percent attributed to the viewers who identify as neither male or female
 
   - name: youtube__video_metadata
     columns:
@@ -38,3 +157,17 @@ models:
         tests:
           - unique
           - not_null
+      - name: title
+        description: Title of the video
+      - name: description
+        description: The video description
+      - name: published_at
+        description: Timestamp of when the video was published
+      - name: channel_title
+        description: Title of the channel
+      - name: default_thumbnail_url
+        description: The default thumbnail url
+      - name: medium_thumbnail_url
+        description: The medium quality thumbnail url
+      - name: high_thumbnail_url
+        description: The high quality thumbnail url

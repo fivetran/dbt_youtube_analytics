@@ -11,6 +11,7 @@ vars:
   youtube__using_video_metadata: true
   youtube__channel_basic_table:         'youtube_channel_basic_data'
   youtube__channel_demographics_table:  'youtube_channel_demographics_data'
+  youtube_analytics_schema: "youtube_analytics_integration_tests"
 
 seeds:
   youtube_analytics_integration_tests:

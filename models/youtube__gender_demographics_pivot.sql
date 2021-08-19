@@ -22,14 +22,14 @@ with gender_pivot as (
 
         {% if var('youtube__using_video_metadata', false) %}
         ,video_metadata.title as video_title
-        ,video_metadata.description as video_desctiption
+        ,video_metadata.description as video_description
         ,video_metadata.published_at as video_published_at
         ,video_metadata.channel_title
         ,video_metadata.default_thumbnail_url
         {% endif %}
         
         {% for col in gender_columns -%}
-            , gender_pivot.{{ col }}
+            , gender_pivot."{{ col }}"
         {% endfor -%}
     from gender_pivot
 

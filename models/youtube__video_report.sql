@@ -21,7 +21,7 @@ with report as (
 
         {% if var('youtube__using_video_metadata', false) %}
         video_metadata.title as video_title,
-        video_metadata.description as video_desctiption,
+        video_metadata.description as video_description,
         video_metadata.channel_title as channel_title,
         video_metadata.published_at as published_at,
         video_metadata.default_thumbnail_url as default_thumbnail_url,
