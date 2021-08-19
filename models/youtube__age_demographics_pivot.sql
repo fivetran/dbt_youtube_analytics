@@ -29,7 +29,7 @@ with age_pivot as (
         {% endif %}
         
         {% for col in age_columns -%}
-            , age_pivot."{{ col }}"
+            , age_pivot.'{{ col }}'
         {% endfor -%}
     from age_pivot
 
