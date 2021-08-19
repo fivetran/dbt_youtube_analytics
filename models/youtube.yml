@@ -7,3 +7,34 @@ models:
         tests: 
           - not_null
           - unique
+
+  - name: youtube__age_demographics_pivot
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - video_id
+
+  - name: youtube__demographics_report
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - video_id
+            - age_group
+            - country_code
+            - gender
+
+  - name: youtube__gender_demographics_pivot
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - video_id
+
+  - name: youtube__video_metadata
+    columns:
+      - name: video_id
+        tests:
+          - unique
+          - not_null

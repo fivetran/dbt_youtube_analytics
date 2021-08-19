@@ -1,5 +1,3 @@
 packages:
-#   - local: ../../youtube_source
-
   - git: https://github.com/fivetran/dbt_youtube_analytics_source
     revision: main
