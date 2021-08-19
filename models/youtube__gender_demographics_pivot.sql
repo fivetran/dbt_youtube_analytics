@@ -29,7 +29,7 @@ with gender_pivot as (
         {% endif %}
         
         {% for col in gender_columns -%}
-            , gender_pivot.'{{ col }}'
+            , gender_pivot.{% if target.type in ('postgres, redshift') %}"{{ col }}"{% else %}{{ col }}{% endif %}
         {% endfor -%}
     from gender_pivot
 
