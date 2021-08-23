@@ -29,7 +29,7 @@ with gender_pivot as (
         {% endif %}
         
         {% for col in gender_columns -%}
-            , gender_pivot.{% if target.type in ('postgres, redshift') %}"{{ col }}"{% else %}{{ col }}{% endif %}
+            , gender_pivot.{% if target.type in ('postgres, redshift') %}"{{ col }}"{% else %}{{ col }}{% endif %} as {{ col }}_view_percentage
         {% endfor -%}
     from gender_pivot
 

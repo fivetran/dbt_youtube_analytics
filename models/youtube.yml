@@ -2,6 +2,7 @@ version: 2
 
 models:
   - name: youtube__video_report
+    description: Each record represents the daily aggregation of your YouTube video performance.
     columns:
       - name: daily_video_id
         tests: 
@@ -51,6 +52,7 @@ models:
         description: The total duration of the video in seconds
 
   - name: youtube__age_demographics_pivot
+    description: Each record represents a daily video view percentage with the age ranges pivoted out for quicker analysis.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -71,22 +73,23 @@ models:
         description: The channel title
       - name: default_thumbnail_url
         description: The default thumbnail url
-      - name: AGE_25_34
+      - name: AGE_25_34_view_percentage
         description: Total number of views percent attributed to the age range 25 - 34 years old
-      - name: AGE_35_44
+      - name: AGE_35_44_view_percentage
         description: Total number of views percent attributed to the age range 35 - 44 years old
-      - name: AGE_45_54
+      - name: AGE_45_54_view_percentage
         description: Total number of views percent attributed to the age range 45 - 54 years old
-      - name: AGE_18_24
+      - name: AGE_18_24_view_percentage
         description: Total number of views percent attributed to the age range 18 - 24 years old
-      - name: AGE_65_
+      - name: AGE_65__view_percentage
         description: Total number of views percent attributed to the age range 65 years and older
-      - name: AGE_55_64
+      - name: AGE_55_64_view_percentage
         description: Total number of views percent attributed to the age range 55 - 64 years old
-      - name: AGE_13_17
+      - name: AGE_13_17_view_percentage
         description: Total number of views percent attributed to the age range 13 - 17 years old
 
   - name: youtube__demographics_report
+    description: Each record represents a daily video view percentage by gender, age, and country.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -124,6 +127,7 @@ models:
         description: Total percent of views the user makes up for the video
 
   - name: youtube__gender_demographics_pivot
+    description: Each record represents a daily video view percentage with the gender options pivoted out for quicker analysis.
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
@@ -144,14 +148,15 @@ models:
         description: The channel title
       - name: default_thumbnail_url
         description: The default thumbnail url
-      - name: MALE
+      - name: MALE_view_percentage
         description: Total number of views percent attributed to the viewers who identify as male
-      - name: FEMALE
+      - name: FEMALE_view_percentage
         description: Total number of views percent attributed to the viewers who identify as female
-      - name: GENDER_OTHER
+      - name: GENDER_OTHER_view_percentage
         description: Total number of views percent attributed to the viewers who identify as neither male or female
 
   - name: youtube__video_metadata
+    description: Each record represents an individual video enriched with metadata.
     columns:
       - name: video_id
         tests:
