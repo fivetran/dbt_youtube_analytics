@@ -14,7 +14,7 @@ This package contains transformation models, designed to work simultaneously wit
 | [youtube__demographics_report](models/youtube__demographics_report.sql)        | Each record represents a daily video view percentage by gender, age, and country.            |
 | [youtube__age_demographics_pivot](models/youtube__age_demographics_pivot.sql)        | Each record represents a daily video view percentage with the age ranges pivoted out for quicker analysis.            |
 | [youtube__gender_demographics_pivot](models/youtube__gender_demographics_pivot.sql)        | Each record represents a daily video view percentage with the gender options pivoted out for quicker analysis.            |
-| [youtube__video_metadata](models/youtube__gender_demographics_pivot.sql)           | Each record represents an individual video enriched with metadata. This model is disabled by default. Read our [YouTube Video Metadata Cloud Function Write Up](write-up_to_go_here) or our [YouTube Analytics source package README](https://github.com/fivetran/dbt_youtube_analytics_source) to learn how to generate this model.          |
+| [youtube__video_metadata](models/youtube__gender_demographics_pivot.sql)           | Each record represents an individual video enriched with metadata. This model is disabled by default. Read our [YouTube Video Metadata Cloud Function Write Up](https://resources.fivetran.com/datasheets/youtube-metadata-cloud-function-guide) or our [YouTube Analytics source package README](https://github.com/fivetran/dbt_youtube_analytics_source) to learn how to generate this model.          |
 
 ## Installation Instructions
 Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
@@ -32,7 +32,7 @@ packages:
 To use this package, you need to pull the following YouTube Analytics reports through Fivetran:
 - [channel_basic_a2](https://developers.google.com/youtube/reporting/v1/reports/channel_reports#video-user-activity) (required)
 - [channel_demographics_a1](https://developers.google.com/youtube/reporting/v1/reports/channel_reports#video-viewer-demographics) (optional)
-- [videos metadata table](write-up_to_go_here) (optional)
+- [videos metadata table](https://resources.fivetran.com/datasheets/youtube-metadata-cloud-function-guide) (optional)
 
 ### Schema Configuration
 By default, this package will look for your YouTube Analytics data in the `youtube_analytics` schema of your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your YouTube Analytics data is, please add the following configuration to your `dbt_project.yml` file:
@@ -51,7 +51,7 @@ vars:
 ## YouTube Video Metadata
 The Fivetran YouTube Analytics connector currently does not support video metadata. Consequently, it may be difficult to analyze individual video data without knowing which video belongs to which record. 
 
-As a workaround, you can create a [Functions connector](https://fivetran.com/docs/functions) that syncs your YouTube video metadata into a table in your destination. This dbt package can then use the `VIDEOS` metadata table to enrich your YouTube Analytics reporting data. To learn more about creating a Functions connector, read our [YouTube Analytics Video Metadata Cloud Function article](to_be_created_write-up_link_here). It provides code and detailed steps on how to configure the function. 
+As a workaround, you can create a [Functions connector](https://fivetran.com/docs/functions) that syncs your YouTube video metadata into a table in your destination. This dbt package can then use the `VIDEOS` metadata table to enrich your YouTube Analytics reporting data. To learn more about creating a Functions connector, read our [YouTube Analytics Video Metadata Cloud Function article](https://resources.fivetran.com/datasheets/youtube-metadata-cloud-function-guide). It provides code and detailed steps on how to configure the function. 
 
 ### Enable Video Metadata
 
