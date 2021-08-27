@@ -73,8 +73,8 @@ By default, this package will look for your `VIDEOS` YouTube Analytics metadata 
 config-version: 2
 
 vars:
-    youTube_metadata_schema: your_schema_name
-    youTube_analytics_database: your_database_name 
+    youtube_metadata_schema: your_schema_name
+    youtube_analytics_database: your_database_name 
 ```
 ### Disable Demographics Report
 This packages assumes you are syncing the YouTube `channel_demographics_a1` report. If you are not syncing this report, you may add the below configuration to your `dbt_project.yml` to disable the `stg_youtube__demographics` model and all downstream references.
