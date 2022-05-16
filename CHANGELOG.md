@@ -1,3 +1,6 @@
+# dbt_youtube_analytics v0.3.0
+🎉 Applying Package Standardization 🎉
+We are applying standardization updates to be more consistent across our documentation.
 # dbt_youtube_analytics v0.2.1
 - Updated the default schema reference for video metadata
 # dbt_youtube_analytics v0.2.0
