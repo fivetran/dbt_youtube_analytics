@@ -12,6 +12,7 @@
     <a alt="PRs">
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
+
 # YouTube Analytics Transformation dbt Package ([Docs](https://fivetran.github.io/dbt_youtube_analytics/))
 # 📣 What does this dbt package do?
 - Produces modeled tables that leverage YouTube Analytics data from [Fivetran's connector](https://fivetran.com/docs/applications/youtube-analytics#youtubeanalytics) in the format described by [this ERD](https://fivetran.com/docs/applications/youtube#schemainformation) and build off the output of our [YouTube Analytics source package](https://github.com/fivetran/dbt_youtube_analytics_source).
