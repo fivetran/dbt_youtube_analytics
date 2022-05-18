@@ -147,7 +147,7 @@ This dbt package is dependent on the following dbt packages. Please be aware tha
     
 ```yml
 packages:
-    - package: fivetran/youtube_source
+    - package: fivetran/youtube_analytics_source
       version: [">=0.3.0", "<0.4.0"]
 
     - package: fivetran/fivetran_utils
