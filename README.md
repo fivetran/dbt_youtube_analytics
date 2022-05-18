@@ -36,7 +36,7 @@ The following table provides a detailed list of all models materialized within t
 ## Step 1: Prerequisites
 To use this dbt package, you must have the following:
 
-- At least one Fivetran Youtube connector syncing data into your destination.
+- At least one Fivetran Youtube Analytics connector syncing data into your destination.
 - A **BigQuery**, **Snowflake**, **Redshift**, **Databricks**, or **PostgreSQL** destination.
 
 ### Required YouTube Channel Reports
