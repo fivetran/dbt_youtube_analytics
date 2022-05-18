@@ -1,6 +1,6 @@
 <p align="center">
     <a alt="License"
-        href="https://github.com/fivetran/dbt_youtube/blob/main/LICENSE">
+        href="https://github.com/fivetran/dbt_youtube_analytics/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
     <a alt="Fivetran-Release"
         href="https://fivetran.com/docs/getting-started/core-concepts#releasephases">
