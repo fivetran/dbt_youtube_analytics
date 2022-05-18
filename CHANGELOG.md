@@ -1,6 +1,14 @@
 # dbt_youtube_analytics v0.3.0
-🎉 Applying Package Standardization 🎉
-We are applying standardization updates to be more consistent across our documentation.
+## 🚨 Breaking Changes 🚨
+- Modified the identifier variables for the source tables to match consistent variable naming across the packages. See below for the old and new variable names:
+| **old variable name**   | **new variable name**    |
+| ------------------------ | ----------------------- |
+| youtube__channel_basic_table  | youtube_analytics_channel_basic_identifier |
+| youtube__channel_demographics_table | youtube_analytics_channel_demographics_identifier |
+
+## 🎉 Documentation and Feature Updates
+- Updated README documentation updates for easier navigation and setup of the dbt package
+- Included `youtube_analytics_video_metadata_identifier` variable for additional flexibility within the package when source tables are named differently.
 # dbt_youtube_analytics v0.2.1
 - Updated the default schema reference for video metadata
 # dbt_youtube_analytics v0.2.0
