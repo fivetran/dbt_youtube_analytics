@@ -9,8 +9,6 @@ vars:
     youtube_analytics_channel_demographics_identifier: "youtube_channel_demographics_data"
     youtube_analytics_video_metadata_identifier:       "youtube_video_metadata_data"
   youtube__using_video_metadata: true
-  youtube__channel_basic_table:         "youtube_channel_basic_data"
-  youtube__channel_demographics_table:  "youtube_channel_demographics_data"
   youtube_analytics_schema: "youtube_analytics_integration_tests"
   youtube_metadata_schema: "youtube_analytics_integration_tests"
 
