@@ -1,18 +1,16 @@
 name: 'youtube_analytics_integration_tests'
-version: '0.2.1'
+version: '0.3.0'
 profile: 'integration_tests'
 config-version: 2
-
 vars:
   youtube_analytics_source:
-    channel_basic:        "{{ ref('youtube_channel_basic_data') }}"
+    channel_basic: "{{ ref('youtube_channel_basic_data') }}"
     channel_demographics: "{{ ref('youtube_channel_demographics_data') }}"
-    video_metadata:       "{{ ref('youtube_video_metadata_data') }}"
+    video_metadata: "{{ ref('youtube_video_metadata_data') }}"
   youtube__using_video_metadata: true
-  youtube__channel_basic_table:         'youtube_channel_basic_data'
-  youtube__channel_demographics_table:  'youtube_channel_demographics_data'
+  youtube__channel_basic_table: 'youtube_channel_basic_data'
+  youtube__channel_demographics_table: 'youtube_channel_demographics_data'
   youtube_analytics_schema: "youtube_analytics_integration_tests"
-
 seeds:
   youtube_analytics_integration_tests:
     +quote_columns: "{{ true if target.type in ('redshift', 'postgres') else false }}"
@@ -25,7 +23,7 @@ seeds:
         card_click_rate: "{{ 'float64' if target.name == 'bigquery' else 'float' }}"
         card_teaser_click_rate: "{{ 'float64' if target.name == 'bigquery' else 'float' }}"
         red_watch_time_minutes: "{{ 'float64' if target.name == 'bigquery' else 'float' }}"
-        watch_time_minutes:  "{{ 'float64' if target.name == 'bigquery' else 'float' }}"
+        watch_time_minutes: "{{ 'float64' if target.name == 'bigquery' else 'float' }}"
     youtube_video_metadata_data:
       +column_types:
         thumbnails: "{{ 'varchar(100)' if target.name in ('redshift', 'postgres') else 'string' }}"
