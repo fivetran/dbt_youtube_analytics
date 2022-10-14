@@ -1,14 +1,12 @@
 name: 'youtube_analytics'
-version: '0.2.1'
+version: '0.3.0'
 config-version: 2
-require-dbt-version: [">=1.0.0", "<2.0.0"]
-
+require-dbt-version: [">=1.2.0", "<2.0.0"]
 vars:
   youtube_analytics:
     channel_basic: "{{ ref('stg_youtube__channel_basic') }}"
     channel_demographics: "{{ ref('stg_youtube__channel_demographics') }}"
     video_metadata: "{{ ref('stg_youtube__video_metadata') }}"
-
 models:
   youtube_analytics:
     +materialized: table
