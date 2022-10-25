@@ -27,3 +27,8 @@ seeds:
     youtube_video_metadata_data:
       +column_types:
         thumbnails: "{{ 'varchar(100)' if target.name in ('redshift', 'postgres') else 'string' }}"
+
+
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['spark_utils', 'dbt_utils']

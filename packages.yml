@@ -1,3 +1,7 @@
 packages:
-- package: fivetran/youtube_analytics_source
-  version: [">=0.2.0", "<0.3.0"]
+# - package: fivetran/youtube_analytics_source
+#   version: [">=0.3.0", "<0.4.0"]
+
+- git: https://github.com/fivetran/dbt_youtube_analytics_source.git
+  revision: MagicBot/dbt-utils-cross-db-migration
+  warn-unpinned: false
