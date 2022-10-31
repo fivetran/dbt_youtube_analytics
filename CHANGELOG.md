@@ -37,6 +37,7 @@
     - `dbt.current_timestamp_in_utc_backcompat`
 - `dbt_utils.surrogate_key` has also been updated to `dbt_utils.generate_surrogate_key`. Since the method for creating surrogate keys differ, we suggest all users do a `full-refresh` for the most accurate data. For more information, please refer to dbt-utils [release notes](https://github.com/dbt-labs/dbt-utils/releases) for this update.
 - `packages.yml` has been updated to reflect new default `fivetran/fivetran_utils` version, previously `[">=0.3.0", "<0.4.0"]` now `[">=0.4.0", "<0.5.0"]`.
+- Previously, Youtube Analytics staging models were by default built within a schema titled (`<target_schema>` + `_stg_youtube`) in your destination. Now, they are by default written to a schema entitled (`<target_schema>` + `youtube_source`) in your destination. Refer to the README for instructions on how to configure this further. 
 
 # dbt_youtube_analytics v0.2.1
 - Updated the default schema reference for video metadata
