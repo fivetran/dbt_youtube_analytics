@@ -59,7 +59,7 @@ with report as (
     select 
         *,
         (average_view_duration_seconds / nullif(average_view_duration_percentage,0)) as video_duration_seconds,
-        {{ dbt_utils.surrogate_key(['date_day','video_id']) }} as daily_video_id
+        {{ dbt_utils.generate_surrogate_key(['date_day','video_id']) }} as daily_video_id
     from aggregated
 
 )
