@@ -1,9 +1,9 @@
 # dbt_youtube_analytics v0.UPDATE.UPDATE
 
- ## Under the Hood:
+## Under the Hood:
+- Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job. ([#11](https://github.com/fivetran/dbt_youtube_analytics/pull/11))
+- Updated the pull request [templates](/.github). ([#11](https://github.com/fivetran/dbt_youtube_analytics/pull/11))
 
-- Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job.
-- Updated the pull request [templates](/.github).
 # dbt_youtube_analytics v0.3.0
 
 ## 🚨 Breaking Changes 🚨:

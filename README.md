@@ -52,8 +52,9 @@ Include the following Youtube Analytics package version in your `packages.yml` f
 # packages.yml
 packages:
   - package: fivetran/youtube_analytics
-    version: [">=0.3.0", "<0.4.0"]
+    version: [">=0.3.0", "<0.4.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
+Do NOT include the `youtube_analytics_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
 
 ## Step 3: Define database and schema variables
 By default, this package runs using your destination and the `youtube_analytics` schema. If this is not where your Youtube Analytics data is (for example, if your youtube schema is named `youtube_analytics_fivetran`), add the following configuration to your root `dbt_project.yml` file:
