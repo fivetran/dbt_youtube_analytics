@@ -3,14 +3,10 @@ with report as (
     select *
     from {{ var('channel_basic') }}
 
-{% if var('youtube__using_video_metadata', false) %}
-
 ),  video_metadata as (
     
     select *
     from {{ ref('youtube__video_metadata') }}
-
-{% endif %}
 
 ), aggregated as (
 
@@ -18,17 +14,13 @@ with report as (
         report.date_day, 
         report.video_id,
         report.channel_id, 
-
-        {% if var('youtube__using_video_metadata', false) %}
-        video_metadata.title as video_title,
-        video_metadata.description as video_description,
-        video_metadata.channel_title as channel_title,
-        video_metadata.published_at as published_at,
-        video_metadata.default_thumbnail_url as default_thumbnail_url,
-        video_metadata.medium_thumbnail_url as medium_thumbnail_url,
-        video_metadata.high_thumbnail_url as high_thumbnail_url,
-        {% endif %}
-
+        video_metadata.video_title,
+        video_metadata.video_description,
+        video_metadata.channel_title,
+        video_metadata.video_published_at,
+        video_metadata.default_thumbnail_url,
+        video_metadata.medium_thumbnail_url,
+        video_metadata.high_thumbnail_url,
         sum(report.average_view_duration_percentage * report.views) / nullif(sum(report.views),0) as average_view_duration_percentage, 
         sum(report.average_view_duration_seconds * report.views) / nullif(sum(report.views),0) as average_view_duration_seconds, 
         sum(report.comments) as comments, 
@@ -41,18 +33,10 @@ with report as (
         sum(report.watch_time_minutes) as watch_time_minutes
     from report
     
-    {% if var('youtube__using_video_metadata', false) %}
-    
     left join video_metadata
         on video_metadata.video_id = report.video_id
 
     {{ dbt_utils.group_by(n=10) }}
-
-    {% else %}
-
-    {{ dbt_utils.group_by(n=3) }}
-
-    {% endif %}
 
 ), additional_features as (
 
