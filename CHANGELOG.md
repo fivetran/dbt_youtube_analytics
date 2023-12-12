@@ -5,6 +5,10 @@
   - `youtube__using_video_metadata`
   - `youtube_metadata_schema`
   - `youtube_analytics_database`
+- The field `published_at` has been renamed to `video_published_at` within the following end models due to changes within the upstream source package: ([PR #12](https://github.com/fivetran/dbt_youtube_analytics_source/pull/12))
+  - `youtube__video_report`
+  - `youtube__video_metadata`
+  - `youtube__demographics_report`
 - To be consistent with our other packages, the identifier variables have been updated. Please see the following changes to the identifier variables used in this package. ([PR #12](https://github.com/fivetran/dbt_youtube_analytics_source/pull/12))
 
 | **old identifier name** | **new identifier name** |
