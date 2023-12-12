@@ -1,5 +1,6 @@
 # dbt_youtube_analytics v0.4.0
 
+The following changes were all made as a result of the [latest updates to the Fivetran YouTube Analytics connector](https://fivetran.com/docs/applications/youtube-analytics/changelog#june2023).
 ## 🚨 Breaking Changes 🚨 (within the upstream [dbt_youtube_analytics_source v0.4.0 release](https://github.com/fivetran/dbt_youtube_analytics_source/releases/tag/v0.4.0)):
 - Removed support for the `video_metadata` Cloud Function generated source table and downstream models. This also means the following variables are no longer used or necessary within the package: ([PR #12](https://github.com/fivetran/dbt_youtube_analytics_source/pull/12))
   - `youtube__using_video_metadata`
