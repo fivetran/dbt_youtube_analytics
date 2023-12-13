@@ -1,8 +1,34 @@
-# dbt_youtube_analytics v0.UPDATE.UPDATE
+# dbt_youtube_analytics v0.4.0
+
+The following changes were all made as a result of the [latest updates to the Fivetran YouTube Analytics connector](https://fivetran.com/docs/applications/youtube-analytics/changelog#june2023).
+## 🚨 Breaking Changes 🚨 (within the upstream [dbt_youtube_analytics_source v0.4.0 release](https://github.com/fivetran/dbt_youtube_analytics_source/releases/tag/v0.4.0)):
+- Removed support for the `video_metadata` Cloud Function generated source table and downstream models. This also means the following variables are no longer used or necessary within the package: ([PR #12](https://github.com/fivetran/dbt_youtube_analytics_source/pull/12))
+  - `youtube__using_video_metadata`
+  - `youtube_metadata_schema`
+  - `youtube_analytics_database`
+- The field `published_at` has been renamed to `video_published_at` within the following end models due to changes within the upstream source package: ([PR #12](https://github.com/fivetran/dbt_youtube_analytics_source/pull/12))
+  - `youtube__video_report`
+  - `youtube__video_metadata`
+  - `youtube__demographics_report`
+- To be consistent with our other packages, the identifier variables have been updated. Please see the following changes to the identifier variables used in this package. ([PR #12](https://github.com/fivetran/dbt_youtube_analytics_source/pull/12))
+
+| **old identifier name** | **new identifier name** |
+| ------------------------|-------------------------|
+| `youtube__channel_basic_table` | `youtube_analytics_channel_basic_a_2_identifier` |
+| `youtube__channel_demographics_table` | `youtube_analytics_channel_demographics_a_1_identifier` |
+
+## Feature Updates:
+- Following the latest update to **all** Fivetran YouTube Analytics connectors, the `video` metadata is now synced as part of the connector by default. Therefore, the `video` source and staging models along with the following downstream models have been updated to reference the `video` source table which is synced by default: ([PR #13](https://github.com/fivetran/dbt_youtube_analytics/pull/13))
+  - `youtube__video_metadata`
+  - `youtube__video_report`
+  - `youtube__age_demographics_pivot`
+  - `youtube__demographics_report`
+  - `youtube__gender_demographics_pivot`
 
 ## Under the Hood:
 - Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job. ([#11](https://github.com/fivetran/dbt_youtube_analytics/pull/11))
 - Updated the pull request [templates](/.github). ([#11](https://github.com/fivetran/dbt_youtube_analytics/pull/11))
+- Included auto-releaser GitHub Actions workflow to automate future releases. ([PR #13](https://github.com/fivetran/dbt_youtube_analytics/pull/13))
 
 # dbt_youtube_analytics v0.3.0
 
