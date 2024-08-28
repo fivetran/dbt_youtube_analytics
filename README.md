@@ -17,17 +17,21 @@
 - Includes options to explore video demographics and a comprehensive overview of video performance that you could combine with other organic ad platform reports.
 - Generates a comprehensive data dictionary of your source and modeled Youtube Analytics data through the [dbt docs site](https://fivetran.github.io/dbt_youtube_analytics/).
 
-The following table provides a detailed list of all models materialized within this package by default.
-> TIP: See more details about these models in the package's [dbt docs site](https://fivetran.github.io/dbt_youtube_analytics/#!/overview?g_v=1&g_e=seeds).
+<!--section=“youtube_transformation_model"-->
+
+The following table provides a detailed list of all tables materialized within this package by default.
+> TIP: See more details about these tables in the package's [dbt docs site](https://fivetran.github.io/dbt_youtube_analytics/#!/overview?g_v=1&g_e=seeds).
 
 
-| **Model**                 | **Description**                                                                                                    |
+| **Table**                 | **Description**                                                                                                    |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | [youtube__video_report](https://fivetran.github.io/dbt_youtube_analytics/#!/model/model.youtube_analytics.youtube__video_report)  | Each record represents the daily aggregation of your YouTube video performance.    |
 | [youtube__demographics_report](https://fivetran.github.io/dbt_youtube_analytics/#!/model/model.youtube_analytics.youtube__demographics_report)        | Each record represents a daily video view percentage by gender, age, and country.            |
 | [youtube__age_demographics_pivot](https://fivetran.github.io/dbt_youtube_analytics/#!/model/model.youtube_analytics.youtube__age_demographics_pivot)        | Each record represents a daily video view percentage with the age ranges pivoted out for quicker analysis.            |
 | [youtube__gender_demographics_pivot](https://fivetran.github.io/dbt_youtube_analytics/#!/model/model.youtube_analytics.youtube__gender_demographics_pivot)        | Each record represents a daily video view percentage with the gender options pivoted out for quicker analysis.            |
 | [youtube__video_metadata](https://fivetran.github.io/dbt_youtube_analytics/#!/model/model.youtube_analytics.youtube__video_metadata)           | Each record represents an individual video enriched with metadata.          |
+
+<!--section-end-->
 
 ## How do I use the dbt package?
 ### Step 1: Prerequisites
