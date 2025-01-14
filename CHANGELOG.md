@@ -1,3 +1,9 @@
+# dbt_youtube_analytics version.version
+
+## Documentation
+- Added Quickstart model counts to README. ([#18](https://github.com/fivetran/dbt_youtube_analytics/pull/18))
+- Corrected references to connectors and connections in the README. ([#18](https://github.com/fivetran/dbt_youtube_analytics/pull/18))
+
 # dbt_youtube_analytics v0.4.0
 
 The following changes were all made as a result of the [latest updates to the Fivetran YouTube Analytics connector](https://fivetran.com/docs/applications/youtube-analytics/changelog#june2023).

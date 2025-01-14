@@ -31,12 +31,14 @@ The following table provides a detailed list of all tables materialized within t
 | [youtube__gender_demographics_pivot](https://fivetran.github.io/dbt_youtube_analytics/#!/model/model.youtube_analytics.youtube__gender_demographics_pivot)        | Each record represents a daily video view percentage with the gender options pivoted out for quicker analysis.            |
 | [youtube__video_metadata](https://fivetran.github.io/dbt_youtube_analytics/#!/model/model.youtube_analytics.youtube__video_metadata)           | Each record represents an individual video enriched with metadata.          |
 
+### Materialized Models
+Each Quickstart transformation job run materializes 11 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
 <!--section-end-->
 
 ## How do I use the dbt package?
 ### Step 1: Prerequisites
 To use this dbt package, you must have the following:
-- At least one Fivetran Youtube Analytics connector syncing data into your destination.
+- At least one Fivetran Youtube Analytics connection syncing data into your destination.
 - A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, or **Databricks** destination.
 
 #### Databricks Dispatch Configuration
