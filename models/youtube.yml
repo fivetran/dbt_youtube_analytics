@@ -3,12 +3,16 @@ version: 2
 models:
   - name: youtube__video_report
     description: Each record represents the daily aggregation of your YouTube video performance.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - daily_video_id
+            - source_relation
     columns:
       - name: daily_video_id
         description: Unique identifier which represents a composite key made up of the date_day and video_id.
         tests: 
           - not_null
-          - unique
       - name: date_day
         description: The date the video was viewed
       - name: video_id
@@ -51,6 +55,8 @@ models:
         description: Total watch time in minutes the video received
       - name: video_duration_seconds
         description: The total duration of the video in seconds
+      - name: source_relation
+        description: The source of the record, if the unioning functionality is being used.
 
   - name: youtube__age_demographics_pivot
     description: Each record represents a daily video view percentage with the age ranges pivoted out for quicker analysis.
@@ -59,6 +65,7 @@ models:
           combination_of_columns:
             - date_day
             - video_id
+            - source_relation
     columns:
       - name: date_day
         description: The date the video was viewed
@@ -88,6 +95,8 @@ models:
         description: Total number of views percent attributed to the age range 55 - 64 years old
       - name: AGE_13_17_view_percentage
         description: Total number of views percent attributed to the age range 13 - 17 years old
+      - name: source_relation
+        description: The source of the record, if the unioning functionality is being used.
 
   - name: youtube__demographics_report
     description: Each record represents a daily video view percentage by gender, age, and country.
@@ -99,6 +108,7 @@ models:
             - age_group
             - country_code
             - gender
+            - source_relation
     columns:
       - name: date_day
         description: The date the video was viewed
@@ -126,6 +136,8 @@ models:
         description: Gender of the user who watched the video. Either 'MALE', 'FEMALE', or 'GENDER_OTHER'
       - name: views_percentage
         description: Total percent of views the user makes up for the video
+      - name: source_relation
+        description: The source of the record, if the unioning functionality is being used.
 
   - name: youtube__gender_demographics_pivot
     description: Each record represents a daily video view percentage with the gender options pivoted out for quicker analysis.
@@ -134,6 +146,7 @@ models:
           combination_of_columns:
             - date_day
             - video_id
+            - source_relation
     columns:
       - name: date_day
         description: The date the video was viewed
@@ -155,14 +168,20 @@ models:
         description: Total number of views percent attributed to the viewers who identify as female
       - name: GENDER_OTHER_view_percentage
         description: Total number of views percent attributed to the viewers who identify as neither male or female
+      - name: source_relation
+        description: The source of the record, if the unioning functionality is being used.
 
   - name: youtube__video_metadata
     description: Each record represents an individual video enriched with metadata.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - video_id
+            - source_relation
     columns:
       - name: video_id
         description: Unique identifier of the video
         tests:
-          - unique
           - not_null
       - name: _fivetran_synced
         description: Timestamp of when the record was synced by Fivetran
@@ -254,3 +273,5 @@ models:
         description: The medium quality thumbnail url
       - name: high_thumbnail_url
         description: The high quality thumbnail url
+      - name: source_relation
+        description: The source of the record, if the unioning functionality is being used.
