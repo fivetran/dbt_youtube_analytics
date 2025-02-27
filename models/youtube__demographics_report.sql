@@ -15,6 +15,7 @@ with demographics as (
     select
         demographics.date_day,
         demographics.video_id,
+        demographics.source_relation,
         video_metadata.video_title,
         video_metadata.video_description,
         video_metadata.channel_title,
@@ -30,8 +31,9 @@ with demographics as (
 
     left join video_metadata
         on video_metadata.video_id = demographics.video_id
+        and video_metadata.source_relation = demographics.source_relation
 
-    {{ dbt_utils.group_by(n=12) }}
+    {{ dbt_utils.group_by(n=13) }}
 )
 
 select *

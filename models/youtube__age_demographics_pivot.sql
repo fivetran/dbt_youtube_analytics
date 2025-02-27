@@ -16,6 +16,7 @@ with age_pivot as (
     select
         age_pivot.date_day,
         age_pivot.video_id,
+        age_pivot.source_relation,
         video_metadata.video_title,
         video_metadata.video_description,
         video_metadata.video_published_at,
@@ -29,6 +30,7 @@ with age_pivot as (
 
     left join video_metadata
         on video_metadata.video_id = age_pivot.video_id
+        and video_metadata.source_relation = age_pivot.source_relation
 )
 
 select *

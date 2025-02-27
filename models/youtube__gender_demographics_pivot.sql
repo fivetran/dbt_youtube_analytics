@@ -16,6 +16,7 @@ with gender_pivot as (
     select
         gender_pivot.date_day,
         gender_pivot.video_id,
+        gender_pivot.source_relation,
         video_metadata.video_title,
         video_metadata.video_description,
         video_metadata.video_published_at,
@@ -29,6 +30,7 @@ with gender_pivot as (
 
     left join video_metadata
         on video_metadata.video_id = gender_pivot.video_id
+        and video_metadata.source_relation = gender_pivot.source_relation
 
 )
 
