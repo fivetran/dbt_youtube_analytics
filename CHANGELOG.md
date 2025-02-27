@@ -1,4 +1,11 @@
-# dbt_youtube_analytics version.version
+# dbt_youtube_analytics v0.5.0
+
+## Feature Updates
+- Introduced the ability to union multiple schemas or databases. For more information on how to leverage this feature, refer to the [README](https://github.com/fivetran/dbt_youtube_analytics/blob/main/README.md#unioning-multiple-youtube-analytics-connections).
+
+## Breaking Changes:
+- Following the unioning functionality, we have added a new field `source_relation` which identifies the source of each record.
+
 
 ## Documentation
 - Added Quickstart model counts to README. ([#18](https://github.com/fivetran/dbt_youtube_analytics/pull/18))
