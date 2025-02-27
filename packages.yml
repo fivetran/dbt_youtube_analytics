@@ -1,3 +1,7 @@
 packages:
-- package: fivetran/youtube_analytics_source
-  version: [">=0.4.0", "<0.5.0"]
+# - package: fivetran/youtube_analytics_source
+#   version: [">=0.5.0", "<0.6.0"]
+
+  - git: https://github.com/fivetran/dbt_youtube_analytics_source.git
+    revision: feature/add_union_schema
+    warn-unpinned: false
