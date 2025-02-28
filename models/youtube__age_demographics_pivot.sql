@@ -10,7 +10,7 @@ with age_pivot as (
     select *
     from {{ ref('youtube__video_metadata') }}
 
-{% set age_columns = dbt_utils.get_column_values(source('youtube_analytics','channel_demographics'), 'age_group') %}
+{% set age_columns = dbt_utils.get_column_values(source('youtube_analytics','channel_demographics_a_1'), 'age_group') %}
 ), final as (
 
     select

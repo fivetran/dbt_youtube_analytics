@@ -10,7 +10,7 @@ with gender_pivot as (
     select *
     from {{ ref('youtube__video_metadata') }}
 
-{% set gender_columns = dbt_utils.get_column_values(source('youtube_analytics','channel_demographics'), 'gender') %}
+{% set gender_columns = dbt_utils.get_column_values(source('youtube_analytics','channel_demographics_a_1'), 'gender') %}
 ), final as (
 
     select
