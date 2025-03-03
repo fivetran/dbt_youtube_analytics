@@ -6,10 +6,14 @@
 ## Breaking Changes:
 - Following the unioning functionality, we have added a new field `source_relation` which identifies the source of each record.
 
-
 ## Documentation
 - Added Quickstart model counts to README. ([#18](https://github.com/fivetran/dbt_youtube_analytics/pull/18))
 - Corrected references to connectors and connections in the README. ([#18](https://github.com/fivetran/dbt_youtube_analytics/pull/18))
+
+## Under the Hood
+- Updated the source table references in order to execute the union macro successfully.
+- Updated the uniqueness tests to include `source_relation`.
+- Updated Copyright and README format.
 
 # dbt_youtube_analytics v0.4.0
 
