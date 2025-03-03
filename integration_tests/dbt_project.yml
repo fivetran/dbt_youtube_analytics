@@ -9,6 +9,9 @@ vars:
     youtube_analytics_video_identifier: "youtube_video_data"
   youtube_analytics_schema: youtube_analytics_integration_tests_4
 
+models: 
+  +schema: "youtube_analytics_{{ var('directed_schema','dev') }}"
+
 seeds:
   youtube_analytics_integration_tests:
     +quote_columns: "{{ true if target.type in ('redshift', 'postgres') else false }}"
