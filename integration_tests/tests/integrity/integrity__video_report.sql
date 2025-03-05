@@ -39,7 +39,7 @@ report as (
 
 select * 
 from staging
-inner join report 
+full outer join report 
     on staging.video_id = report.video_id
     and staging.source_relation = report.source_relation
 where 

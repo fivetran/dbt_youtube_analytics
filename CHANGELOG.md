@@ -1,19 +1,23 @@
 # dbt_youtube_analytics v0.5.0
+[PR #19](https://github.com/fivetran/dbt_youtube_analytics/pull/19) includes the following updates:
 
 ## Feature Updates
 - Introduced the ability to union multiple schemas or databases. For more information on how to leverage this feature, refer to the [README](https://github.com/fivetran/dbt_youtube_analytics/blob/main/README.md#unioning-multiple-youtube-analytics-connections).
 
 ## Breaking Changes:
 - Following the unioning functionality, we have added a new field `source_relation` which identifies the source of each record.
+- Updated the source table references in order to execute the union macro successfully.
+  - The `channel_basic` reference has been changed to `channel_basic_a_2`
+  - The `channel_demographics` reference has been changed to `channel_demographics_a_1`
 
 ## Documentation
 - Added Quickstart model counts to README. ([#18](https://github.com/fivetran/dbt_youtube_analytics/pull/18))
 - Corrected references to connectors and connections in the README. ([#18](https://github.com/fivetran/dbt_youtube_analytics/pull/18))
 
 ## Under the Hood
-- Updated the source table references in order to execute the union macro successfully.
 - Updated the uniqueness tests to include `source_relation`.
 - Updated Copyright and README format.
+- Added validation tests for `youtube__video_report`.
 
 # dbt_youtube_analytics v0.4.0
 
