@@ -88,8 +88,6 @@ If you have multiple Youtube Analytics connections in Fivetran and want to use t
 
 ```yml
 # dbt_project.yml
-...
-config-version: 2
 vars:
     ##You may set EITHER the schemas variables below
     youtube_analytics_union_schemas: ['youtube_analytics_one','youtube_analytics_two']
