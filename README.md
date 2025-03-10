@@ -83,6 +83,21 @@ vars:
 
 ### (Optional) Step 5: Additional configurations
 
+#### Unioning Multiple Youtube Analytics Connections
+If you have multiple Youtube Analytics connections in Fivetran and want to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table(s) into the final models. You will be able to see which source it came from in the `source_relation` column(s) of each model. To use this functionality, you will need to set either (**note that you cannot use both**) the `union_schemas` or `union_databases` variables:
+
+```yml
+# dbt_project.yml
+...
+config-version: 2
+vars:
+    ##You may set EITHER the schemas variables below
+    youtube_analytics_union_schemas: ['youtube_analytics_one','youtube_analytics_two']
+
+    ##Or may set EITHER the databases variables below
+    youtube_analytics_union_databases: ['youtube_analytics_one','youtube_analytics_two']
+```
+
 #### Change the build schema
 By default, this package will build the YouTube Analytics staging models within a schema titled (`<target_schema>` + `_youtube_source`) and the YouTube Analytics final models within a schema titled (`<target_schema>` + `_youtube`) in your target database. If this is not where you would like your modeled YouTube Analytics data to be written to, add the following configuration to your `dbt_project.yml` file:
 
@@ -103,20 +118,6 @@ If an individual source table has a different name than the package expects, add
 # dbt_project.yml
 vars:
     youtube_analytics_<default_source_table_name>_identifier: your_table_name 
-```
-#### Unioning Multiple Youtube Analytics Connections
-If you have multiple Youtube Analytics connections in Fivetran and want to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table(s) into the final models. You will be able to see which source it came from in the `source_relation` column(s) of each model. To use this functionality, you will need to set either (**note that you cannot use both**) the `union_schemas` or `union_databases` variables:
-
-```yml
-# dbt_project.yml
-...
-config-version: 2
-vars:
-    ##You may set EITHER the schemas variables below
-    youtube_analytics_union_schemas: ['youtube_analytics_one','youtube_analytics_two']
-
-    ##Or may set EITHER the databases variables below
-    youtube_analytics_union_databases: ['youtube_analytics_one','youtube_analytics_two']
 ```
 
 ### (Optional) Step 6: Orchestrate your models with Fivetran Transformations for dbt Core™
