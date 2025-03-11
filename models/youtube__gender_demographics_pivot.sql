@@ -1,3 +1,5 @@
+-- depends_on: {{ ref('stg_youtube__channel_demographics') }}
+
 {{ config(enabled=var('youtube__using_channel_demographics', true)) }}
 
 with gender_pivot as (
@@ -10,12 +12,13 @@ with gender_pivot as (
     select *
     from {{ ref('youtube__video_metadata') }}
 
-{% set gender_columns = dbt_utils.get_column_values(source('youtube_analytics','channel_demographics'), 'gender') %}
+{% set gender_columns = dbt_utils.get_column_values( ref('stg_youtube__channel_demographics'), 'gender') %}
 ), final as (
 
     select
         gender_pivot.date_day,
         gender_pivot.video_id,
+        gender_pivot.source_relation,
         video_metadata.video_title,
         video_metadata.video_description,
         video_metadata.video_published_at,
@@ -29,6 +32,7 @@ with gender_pivot as (
 
     left join video_metadata
         on video_metadata.video_id = gender_pivot.video_id
+        and video_metadata.source_relation = gender_pivot.source_relation
 
 )
 

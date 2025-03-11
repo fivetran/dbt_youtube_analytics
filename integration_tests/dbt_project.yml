@@ -1,5 +1,5 @@
 name: 'youtube_analytics_integration_tests'
-version: '0.4.0'
+version: '0.5.0'
 profile: 'integration_tests'
 config-version: 2
 vars:
@@ -7,7 +7,10 @@ vars:
     youtube_analytics_channel_basic_a_2_identifier: "youtube_channel_basic_data"
     youtube_analytics_channel_demographics_a_1_identifier: "youtube_channel_demographics_data"
     youtube_analytics_video_identifier: "youtube_video_data"
-  youtube_analytics_schema: youtube_analytics_integration_tests_2
+  youtube_analytics_schema: youtube_analytics_integration_tests_4
+
+models: 
+  +schema: "youtube_analytics_{{ var('directed_schema','dev') }}"
 
 seeds:
   youtube_analytics_integration_tests:

@@ -1,3 +1,4 @@
+-- depends_on: {{ ref('stg_youtube__channel_demographics') }}
 {{ config(enabled=var('youtube__using_channel_demographics', true)) }}
 
 with age_pivot as (
@@ -10,12 +11,13 @@ with age_pivot as (
     select *
     from {{ ref('youtube__video_metadata') }}
 
-{% set age_columns = dbt_utils.get_column_values(source('youtube_analytics','channel_demographics'), 'age_group') %}
+{% set age_columns = dbt_utils.get_column_values( ref('stg_youtube__channel_demographics'), 'age_group') %}
 ), final as (
 
     select
         age_pivot.date_day,
         age_pivot.video_id,
+        age_pivot.source_relation,
         video_metadata.video_title,
         video_metadata.video_description,
         video_metadata.video_published_at,
@@ -29,6 +31,7 @@ with age_pivot as (
 
     left join video_metadata
         on video_metadata.video_id = age_pivot.video_id
+        and video_metadata.source_relation = age_pivot.source_relation
 )
 
 select *

@@ -14,6 +14,7 @@ with report as (
         report.date_day, 
         report.video_id,
         report.channel_id, 
+        report.source_relation,
         video_metadata.video_title,
         video_metadata.video_description,
         video_metadata.channel_title,
@@ -35,8 +36,9 @@ with report as (
     
     left join video_metadata
         on video_metadata.video_id = report.video_id
+        and video_metadata.source_relation = report.source_relation
 
-    {{ dbt_utils.group_by(n=10) }}
+    {{ dbt_utils.group_by(n=11) }}
 
 ), additional_features as (
 
