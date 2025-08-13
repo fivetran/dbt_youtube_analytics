@@ -16,7 +16,7 @@
 </p>
 
 ## What does this dbt package do?
-- Produces modeled tables that leverage data in the format described by the [YouTube Channel Report schemas](https://fivetran.com/docs/applications/youtube-analytics#schemainformation) and builds off the output of our [Youtube Analytics source package](https://github.com/fivetran/dbt_youtube_analytics_source).
+- Produces modeled tables that leverage data in the format described by the [YouTube Channel Report schemas](https://fivetran.com/docs/applications/youtube-analytics#schemainformation).
 - Transform the core object tables into analytics-ready models.
 - Includes options to explore video demographics and a comprehensive overview of video performance that you could combine with other organic ad platform reports.
 - Generates a comprehensive data dictionary of your source and modeled Youtube Analytics data through the [dbt docs site](https://fivetran.github.io/dbt_youtube_analytics/).
@@ -60,9 +60,9 @@ Include the following Youtube Analytics package version in your `packages.yml` f
 # packages.yml
 packages:
   - package: fivetran/youtube_analytics
-    version: [">=0.5.0", "<0.6.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=1.0.0", "<1.1.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
-Do NOT include the `youtube_analytics_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
+> All required sources and staging models are now bundled into this transformation package. Do not include `fivetran/youtube_analytics_source` in your `packages.yml` since this package has been deprecated.
 
 ### Step 3: Define database and schema variables
 By default, this package runs using your destination and the `youtube_analytics` schema. If this is not where your Youtube Analytics data is (for example, if your youtube schema is named `youtube_analytics_fivetran`), add the following configuration to your root `dbt_project.yml` file:
@@ -104,10 +104,10 @@ By default, this package will build the YouTube Analytics staging models within 
 ```yml
 # dbt_project.yml
 models:
-  youtube_analytics:
-    +schema: my_new_schema_name # leave blank for just the target_schema
-  youtube_analytics_source:
-    +schema: my_new_schema_name # leave blank for just the target_schema
+    youtube_analytics:
+      +schema: my_new_schema_name # Leave +schema: blank to use the default target_schema.
+      staging:
+        +schema: my_new_schema_name # Leave +schema: blank to use the default target_schema.
 ```
 
 #### Change the source table references
@@ -134,8 +134,6 @@ This dbt package is dependent on the following dbt packages. These dependencies 
 
 ```yml
 packages:
-    - package: fivetran/youtube_analytics_source
-      version: [">=0.5.0", "<0.6.0"]
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
     - package: dbt-labs/dbt_utils

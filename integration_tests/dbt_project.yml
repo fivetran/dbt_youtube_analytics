@@ -1,9 +1,9 @@
 name: 'youtube_analytics_integration_tests'
-version: '0.5.0'
+version: '1.0.0'
 profile: 'integration_tests'
 config-version: 2
 vars:
-  youtube_analytics_source:
+  youtube_analytics:
     youtube_analytics_channel_basic_a_2_identifier: "youtube_channel_basic_data"
     youtube_analytics_channel_demographics_a_1_identifier: "youtube_channel_demographics_data"
     youtube_analytics_video_identifier: "youtube_video_data"
