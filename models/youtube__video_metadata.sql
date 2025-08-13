@@ -1,6 +1,6 @@
 with video_metadata as (
     select *
-    from {{ var('video') }}
+    from {{ ref('stg_youtube__video') }}
 
 ), url_parsing as (
 
