@@ -14,5 +14,6 @@ models:
     intermediate:
       +materialized: ephemeral
     staging:
-      +schema: youtube_analytics_source
-      +materialized: view
+      +schema: youtube_source
+      tmp:
+        +materialized: view
