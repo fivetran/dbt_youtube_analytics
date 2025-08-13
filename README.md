@@ -1,4 +1,4 @@
-# Youtube Analytics Transformation dbt Package ([Docs](https://fivetran.github.io/dbt_youtube_analytics/))
+# Youtube Analytics dbt Package ([Docs](https://fivetran.github.io/dbt_youtube_analytics/))
 
 <p align="left">
     <a alt="License"
