@@ -5,6 +5,10 @@ sources:
     schema: "{{ var('youtube_analytics_schema', 'youtube_analytics') }}"
     database: "{% if target.type != 'spark'%}{{ var('youtube_analytics_database', target.database) }}{% endif %}"
     loader: Fivetran
+
+    config:
+      loaded_at_field: _fivetran_synced
+
     tables:
       - name: channel_basic_a_2
         identifier: "{{ var('youtube_analytics_channel_basic_a_2_identifier', 'channel_basic_a_2') }}"
