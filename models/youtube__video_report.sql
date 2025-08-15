@@ -1,7 +1,7 @@
 with report as (
 
     select *
-    from {{ var('channel_basic') }}
+    from {{ ref('stg_youtube__channel_basic') }}
 
 ),  video_metadata as (
     

@@ -3,7 +3,7 @@
 with demographics as (
     
     select *
-    from {{ var('channel_demographics') }}
+    from {{ ref('stg_youtube__channel_demographics') }}
 
 ),  video_metadata as (
     

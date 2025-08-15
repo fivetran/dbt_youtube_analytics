@@ -1,0 +1,12 @@
+{{
+    fivetran_utils.union_data(
+        table_identifier='channel_basic_a_2', 
+        database_variable='youtube_analytics_database', 
+        schema_variable='youtube_analytics_schema', 
+        default_database=target.database,
+        default_schema='youtube_analytics',
+        default_variable='channel_basic',
+        union_schema_variable='youtube_analytics_union_schemas',
+        union_database_variable='youtube_analytics_union_databases'
+    )
+}}
