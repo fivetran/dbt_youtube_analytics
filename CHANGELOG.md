@@ -1,3 +1,12 @@
+# dbt_youtube_analytics v1.0.1
+
+## Bug Fixes
+- Fixed mixed-case column names in `youtube__age_demographics_pivot` and `youtube__gender_demographics_pivot` models that were causing issues with Snowflake's `persist_docs` functionality. Column names are now consistently lowercase (e.g., `age_25_34_view_percentage` instead of `AGE_25_34_view_percentage`).
+- Updated corresponding documentation in `models/youtube.yml` to reflect the lowercase column names.
+
+## Under the Hood
+- Applied `| lower` filter to dynamically generated column names in pivot models to ensure consistent casing across different database platforms.
+
 # dbt_youtube_analytics v1.0.0
 
 [PR #23](https://github.com/fivetran/dbt_youtube_analytics/pull/23) includes the following updates:
