@@ -70,19 +70,19 @@ models:
         description: The channel title
       - name: default_thumbnail_url
         description: The default thumbnail url
-      - name: AGE_25_34_view_percentage
+      - name: age_25_34_view_percentage
         description: Total number of views percent attributed to the age range 25 - 34 years old
-      - name: AGE_35_44_view_percentage
+      - name: age_35_44_view_percentage
         description: Total number of views percent attributed to the age range 35 - 44 years old
-      - name: AGE_45_54_view_percentage
+      - name: age_45_54_view_percentage
         description: Total number of views percent attributed to the age range 45 - 54 years old
-      - name: AGE_18_24_view_percentage
+      - name: age_18_24_view_percentage
         description: Total number of views percent attributed to the age range 18 - 24 years old
-      - name: AGE_65__view_percentage
+      - name: age_65__view_percentage
         description: Total number of views percent attributed to the age range 65 years and older
-      - name: AGE_55_64_view_percentage
+      - name: age_55_64_view_percentage
         description: Total number of views percent attributed to the age range 55 - 64 years old
-      - name: AGE_13_17_view_percentage
+      - name: age_13_17_view_percentage
         description: Total number of views percent attributed to the age range 13 - 17 years old
       - name: source_relation
         description: The source of the record, if the unioning functionality is being used.
@@ -136,12 +136,14 @@ models:
         description: The channel title
       - name: default_thumbnail_url
         description: The default thumbnail url
-      - name: MALE_view_percentage
+      - name: male_view_percentage
         description: Total number of views percent attributed to the viewers who identify as male
-      - name: FEMALE_view_percentage
+      - name: female_view_percentage
         description: Total number of views percent attributed to the viewers who identify as female
-      - name: GENDER_OTHER_view_percentage
+      - name: gender_other_view_percentage
         description: Total number of views percent attributed to the viewers who identify as neither male or female
+      - name: user_specified_view_percentage
+        description: Total number of views percent attributed to the viewers who have specified their gender
       - name: source_relation
         description: The source of the record, if the unioning functionality is being used.
 
