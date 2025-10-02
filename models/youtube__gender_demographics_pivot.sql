@@ -26,7 +26,7 @@ with gender_pivot as (
         video_metadata.default_thumbnail_url
         
         {% for col in gender_columns -%}
-            , gender_pivot.{% if target.type in ('postgres, redshift') %}"{{ col }}"{% else %}{{ col }}{% endif %} as {{ col | lower}}_view_percentage
+            , gender_pivot.{% if target.type in ('postgres, redshift') %}"{{ col }}"{% else %}{{ col }}{% endif %} as {{ col | lower }}_view_percentage
         {% endfor -%}
     from gender_pivot
 
