@@ -5,6 +5,10 @@ This release includes the following updates:
 ## Bug Fixes
 - Fixed mixed-case column names in `youtube__age_demographics_pivot` and `youtube__gender_demographics_pivot` models that were causing issues with Snowflake's `persist_docs` functionality. Column names are now consistently lowercase (e.g., `age_25_34_view_percentage` instead of `AGE_25_34_view_percentage`). ([PR #26](https://github.com/fivetran/dbt_youtube_analytics/pull/26))
 
+## Documentation
+- Added documentation for the `user_specified_view_percentage` field in the `youtube__gender_demographics_pivot` model. 
+> `USER_SPECIFIED` has replaced `GENDER_OTHER` as a demographic in the [YouTube Analytics Reporting API](https://developers.google.com/youtube/analytics/dimensions#gender), but the model will continue to have both the `user_specified_view_percentage` and `gender_other_view_percentage` fields.
+
 ## Under the Hood
 - (Maintainers only) Added consistency validation tests for the `youtube__age_demographics_pivot` and `youtube__gender_demographics_pivot` models. ([PR #27](https://github.com/fivetran/dbt_youtube_analytics/pull/27))
 

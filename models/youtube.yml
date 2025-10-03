@@ -141,9 +141,9 @@ models:
       - name: female_view_percentage
         description: Total number of views percent attributed to the viewers who identify as female
       - name: gender_other_view_percentage
-        description: Total number of views percent attributed to the viewers who identify as neither male or female
+        description: (DEPRECATED) Total number of views percent attributed to the viewers who identify as neither male or female. This column has been replaced by `user_specified_view_percentage`.
       - name: user_specified_view_percentage
-        description: Total number of views percent attributed to the viewers who have specified their gender
+        description: Total number of views percent attributed to the viewers who have specified their gender. This has replaced the `gender_other_view_percentage` column.
       - name: source_relation
         description: The source of the record, if the unioning functionality is being used.
 
