@@ -62,7 +62,7 @@ sources:
           - name: date
             description: Date the video was watched
           - name: gender
-            description: Gender of the user who watched the video. Either 'MALE', 'FEMALE', or 'GENDER_OTHER'
+            description: Gender of the user who watched the video. Either 'MALE', 'FEMALE', 'USER_SPECIFIED', or (outdated) 'GENDER_OTHER'. 'USER_SPECIFIED' has replaced 'GENDER_OTHER'.
           - name: live_or_on_demand
             description: Indicates if the video was watched live or on demand. Either 'live' or 'on_demand'
           - name: subscribed_status

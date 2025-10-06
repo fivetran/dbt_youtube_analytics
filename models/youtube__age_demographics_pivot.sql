@@ -25,7 +25,7 @@ with age_pivot as (
         video_metadata.default_thumbnail_url
         
         {% for col in age_columns -%}
-            , age_pivot.{% if target.type in ('postgres, redshift') %}"{{ col }}"{% else %}{{ col }}{% endif %} as {{ col }}_view_percentage
+            , age_pivot.{% if target.type in ('postgres, redshift') %}"{{ col }}"{% else %}{{ col }}{% endif %} as {{ col | lower }}_view_percentage
         {% endfor -%}
     from age_pivot
 
