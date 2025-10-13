@@ -23,7 +23,8 @@ dbt source freshness --vars '{youtube_analytics_schema: youtube_analytics_sqlw_t
 dbt compile --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4}' --target "$db"
 dbt run --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4}' --target "$db" --full-refresh
 dbt test --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4}' --target "$db"
-dbt run --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4, youtube__using_channel_demographics: true}' --target "$db"
+dbt run --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4, youtube__using_channel_demographics: true, youtube__using_video_metadata: true}' --target "$db"
+dbt run --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4, youtube__using_channel_demographics: false, youtube__using_video_metadata: false}' --target "$db"
 else
 
 dbt seed --target "$db" --full-refresh
@@ -31,6 +32,7 @@ dbt run --target "$db" --full-refresh
 dbt test --target "$db"
 ## UPDATE FOR VARS HERE, IF NO VARS, PLEASE REMOVE
 dbt run --vars '{youtube__using_video_metadata: False, youtube__using_channel_demographics: False}' --target "$db" --full-refresh
+dbt run --vars '{youtube__using_video_metadata: True, youtube__using_channel_demographics: True}' --target "$db"
 dbt test --target "$db"
 ### END VARS CHUNK, REMOVE IF NOT USING
 fi
