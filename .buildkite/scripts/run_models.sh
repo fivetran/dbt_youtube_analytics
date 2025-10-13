@@ -16,6 +16,17 @@ db=$1
 echo `pwd`
 cd integration_tests
 dbt deps
+
+if [ "$db" = "databricks-sql" ]; then
+dbt seed --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4}' --target "$db" --full-refresh
+dbt source freshness --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4}' --target "$db" || echo "...Only verifying freshness runs…"
+dbt compile --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4}' --target "$db"
+dbt run --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4}' --target "$db" --full-refresh
+dbt test --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4}' --target "$db"
+dbt run --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4, youtube__using_channel_demographics: true}' --target "$db"
+dbt run --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4, youtube__using_channel_demographics: true}' --target "$db"
+else
+
 dbt seed --target "$db" --full-refresh
 dbt run --target "$db" --full-refresh
 dbt test --target "$db"

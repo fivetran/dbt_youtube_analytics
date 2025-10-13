@@ -1,3 +1,10 @@
+# dbt_youtube_analytics v1.0.2
+
+This release includes the following updates:
+
+## Bug Fixes
+- Change `snippet_published_at` and `status_publish_at` from datetime to timestamp datatype to fix compatibility issues with Databricks SQL Warehouses ([PR #28](https://github.com/fivetran/dbt_youtube_analytics/pull/28))
+
 # dbt_youtube_analytics v1.0.1
 
 This release includes the following updates:

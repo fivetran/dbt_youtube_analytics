@@ -1,5 +1,5 @@
 name: 'youtube_analytics_integration_tests'
-version: '1.0.1'
+version: '1.0.2'
 profile: 'integration_tests'
 config-version: 2
 vars:
@@ -10,7 +10,8 @@ vars:
   youtube_analytics_schema: youtube_analytics_integration_tests
 
 models: 
-  +schema: "youtube_analytics_{{ var('directed_schema','dev') }}"
+# +schema: "{{ 'youtube_analytics_sqlw_tests_4' if target.name == 'databricks-sql' else 'youtube_analytics' }}"
+ +schema: "youtube_analytics_{{ var('directed_schema','dev') }}" ## To be used for validation testing
 
 seeds:
   +docs:
@@ -30,6 +31,7 @@ seeds:
     youtube_video_data:
       +column_types:
         snippet_thumbnails: "{{ 'string' if target.type in ('bigquery','spark','databricks') else 'varchar' }}"
+
 
 
 dispatch:
