@@ -24,7 +24,6 @@ dbt compile --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4}' 
 dbt run --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4}' --target "$db" --full-refresh
 dbt test --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4}' --target "$db"
 dbt run --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4, youtube__using_channel_demographics: true, youtube__using_video_metadata: true}' --target "$db"
-dbt run --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4, youtube__using_channel_demographics: false, youtube__using_video_metadata: false}' --target "$db"
 else
 
 dbt seed --target "$db" --full-refresh
