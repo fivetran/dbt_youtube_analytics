@@ -25,7 +25,6 @@ dbt run --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4}' --ta
 dbt test --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4}' --target "$db"
 dbt run --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests_4, youtube__using_channel_demographics: true}' --target "$db"
 else
-fi
 
 dbt seed --target "$db" --full-refresh
 dbt run --target "$db" --full-refresh
@@ -34,4 +33,6 @@ dbt test --target "$db"
 dbt run --vars '{youtube__using_video_metadata: False, youtube__using_channel_demographics: False}' --target "$db" --full-refresh
 dbt test --target "$db"
 ### END VARS CHUNK, REMOVE IF NOT USING
+fi
+
 dbt run-operation fivetran_utils.drop_schemas_automation --target "$db"
