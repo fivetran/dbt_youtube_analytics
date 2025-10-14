@@ -10,7 +10,7 @@ vars:
   youtube_analytics_schema: youtube_analytics_integration_tests
 
 models: 
- +schema: "{{ 'youtube_analytics_sqlw_tests_4' if target.name == 'databricks-sql' else 'youtube_analytics' }}"
+ +schema: "{{ 'youtube_analytics_sqlw_tests' if target.name == 'databricks-sql' else 'youtube_analytics' }}"
 # +schema: "youtube_analytics_{{ var('directed_schema','dev') }}" ## To be used for validation testing
 
 seeds:

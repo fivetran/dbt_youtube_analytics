@@ -1,5 +1,3 @@
--- depends_on: {{ ref('stg_youtube__channel_demographics') }}
-
 {{ config(enabled=var('youtube__using_channel_demographics', true)) }}
 
 with demographics as (
