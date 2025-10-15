@@ -25,7 +25,7 @@
     {"name": "snippet_description", "datatype": dbt.type_string()},
     {"name": "snippet_live_broadcast_content", "datatype": dbt.type_string()},
     {"name": "snippet_localized", "datatype": dbt.type_string()},
-    {"name": "snippet_published_at", "datatype": "datetime"},
+    {"name": "snippet_published_at", "datatype": dbt.type_timestamp()},
     {"name": "snippet_tags", "datatype": dbt.type_string()},
     {"name": "snippet_thumbnails", "datatype": dbt.type_string()},
     {"name": "snippet_title", "datatype": dbt.type_string()},
@@ -39,7 +39,7 @@
     {"name": "status_license", "datatype": dbt.type_string()},
     {"name": "status_made_for_kids", "datatype": "boolean"},
     {"name": "status_public_stats_viewable", "datatype": "boolean"},
-    {"name": "status_publish_at", "datatype": "datetime"},
+    {"name": "status_publish_at", "datatype": dbt.type_timestamp()},
     {"name": "status_rejection_reason", "datatype": dbt.type_string()},
     {"name": "status_self_declared_made_for_kids", "datatype": "boolean"},
     {"name": "upload_status", "datatype": dbt.type_string()}
