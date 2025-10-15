@@ -22,6 +22,7 @@ dbt seed --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests}' --tar
 dbt run --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests}' --target "$db" --full-refresh
 dbt test --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests}' --target "$db"
 dbt run --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests, youtube__using_channel_demographics: false}' --target "$db"
+dbt test --vars '{youtube_analytics_schema: youtube_analytics_sqlw_tests}' --target "$db"
 else
 
 dbt seed --target "$db" --full-refresh
