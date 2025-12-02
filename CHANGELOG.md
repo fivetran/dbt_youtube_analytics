@@ -1,3 +1,9 @@
+# dbt_youtube_analytics v1.1.0
+[PR #30](https://github.com/fivetran/dbt_youtube_analytics/pull/30) includes the following updates:
+
+## Features
+- Increases the required dbt version upper limit to v3.0.0.
+
 # dbt_youtube_analytics v1.0.2
 
 This release includes the following updates:
