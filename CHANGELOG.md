@@ -1,14 +1,9 @@
 # dbt_youtube_analytics v1.2.0
 
-[PR #31](https://github.com/fivetran/dbt_youtube_analytics/pull/31) includes the following updates:
+[PR #31](https://github.com/fivetran/dbt_youtube_analytics/pull/31) includes the following update:
 
 ## Documentation
 - Updates README with standardized Fivetran formatting.
-
-## Under the Hood
-- In the `quickstart.yml` file:
-  - Adds `table_variables` for relevant sources to prevent missing sources from blocking downstream Quickstart models.
-  - Adds `supported_vars` for Quickstart UI customization.
 
 # dbt_youtube_analytics v1.1.0
 [PR #30](https://github.com/fivetran/dbt_youtube_analytics/pull/30) includes the following updates:
