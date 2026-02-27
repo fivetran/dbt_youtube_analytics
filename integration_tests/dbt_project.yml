@@ -13,7 +13,7 @@ models:
   +persist_docs:
     relation: true
     columns: "{{ false if target.type in ('databricks') else true }}" 
- +schema: "{{ 'youtube_analytics_sqlw_tests' if target.name == 'databricks-sql' else 'youtube_analytics' }}"
+  +schema: "{{ 'youtube_analytics_sqlw_tests' if target.name == 'databricks-sql' else 'youtube_analytics' }}"
 # +schema: "youtube_analytics_{{ var('directed_schema','dev') }}" ## To be used for validation testing
 
 seeds:
