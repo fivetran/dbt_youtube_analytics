@@ -13,8 +13,7 @@ models:
   +persist_docs:
     relation: true
     columns: "{{ false if target.type in ('databricks') else true }}" 
-  +schema: "{{ 'youtube_analytics_sqlw_tests' if target.name == 'databricks-sql' else 'youtube_analytics' }}"
-# +schema: "youtube_analytics_{{ var('directed_schema','dev') }}" ## To be used for validation testing
+  +schema: "youtube_analytics_{{ var('directed_schema','dev') }}" 
 
 seeds:
   +docs:
@@ -35,11 +34,10 @@ seeds:
       +column_types:
         snippet_thumbnails: "{{ 'string' if target.type in ('bigquery','spark','databricks') else 'varchar' }}"
 
-
-
 dispatch:
   - macro_namespace: dbt_utils
     search_order: ['spark_utils', 'dbt_utils']
+
 flags:
   send_anonymous_usage_stats: False
   use_colors: True
