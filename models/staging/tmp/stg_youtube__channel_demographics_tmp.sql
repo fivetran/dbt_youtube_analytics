@@ -1,5 +1,7 @@
 {{ config(enabled=var('youtube__using_channel_demographics', true)) }}
 
+{% if var('youtube_analytics_union_schemas', []) | length > 0 or var('youtube_analytics_union_databases', []) | length > 0 %}
+
 {{
     fivetran_utils.union_data(
         table_identifier='channel_demographics_a_1', 
@@ -12,3 +14,15 @@
         union_database_variable='youtube_analytics_union_databases'
     )
 }}
+
+{% else %}
+
+{{
+    fivetran_utils.union_connections(
+        connection_dictionary='youtube_analytics_sources',
+        single_source_name='youtube_analytics',
+        single_table_name='channel_demographics_a_1'
+    )
+}}
+
+{% endif %}

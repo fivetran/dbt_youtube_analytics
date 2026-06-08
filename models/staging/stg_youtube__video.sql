@@ -1,4 +1,3 @@
-
 with base as (
 
     select * 
@@ -15,10 +14,7 @@ fields as (
             )
         }}
         
-        {{ fivetran_utils.source_relation(
-            union_schema_variable='youtube_analytics_union_schemas', 
-            union_database_variable='youtube_analytics_union_databases') 
-        }}
+        {{ fivetran_utils.apply_source_relation(package_name='youtube_analytics') }}
 
     from base
 ),
