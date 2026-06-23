@@ -65,7 +65,7 @@ Include the following Youtube Analytics package version in your `packages.yml` f
 # packages.yml
 packages:
   - package: fivetran/youtube_analytics
-    version: [">=1.1.0", "<1.2.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: [">=1.2.0", "<1.3.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 > All required sources and staging models are now bundled into this transformation package. Do not include `fivetran/youtube_analytics_source` in your `packages.yml` since this package has been deprecated.
 
@@ -78,14 +78,40 @@ dispatch:
 ```
 
 ### Define database and schema variables
-By default, this package runs using your destination and the `youtube_analytics` schema. If this is not where your Youtube Analytics data is (for example, if your youtube schema is named `youtube_analytics_fivetran`), add the following configuration to your root `dbt_project.yml` file:
+#### Option A: Single connection
+By default, this package runs using your destination and the `youtube_analytics` schema. If this is not where your Youtube Analytics data is (for example, if your Youtube Analytics schema is named `youtube_analytics_fivetran`), add the following configuration to your root `dbt_project.yml` file:
+
+```yml
+vars:
+    youtube_analytics_database: your_destination_name
+    youtube_analytics_schema: your_schema_name
+```
+
+#### Option B: Union multiple connections
+If you have multiple Youtube Analytics connections in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. For each source table, the package will union all of the data together and pass the unioned table into the transformations. The `source_relation` column in each model indicates the origin of each record.
+
+To use this functionality, you will need to set the `youtube_analytics_sources` variable in your root `dbt_project.yml` file:
 
 ```yml
 # dbt_project.yml
+
 vars:
-    youtube_analytics_schema: your_schema_name
-    youtube_analytics_database: your_database_name 
+  youtube_analytics:
+    youtube_analytics_sources:
+      - database: connection_1_destination_name # Required
+        schema: connection_1_schema_name # Required
+        name: connection_1_source_name # Required only if following the step in the following subsection
+
+      - database: connection_2_destination_name
+        schema: connection_2_schema_name
+        name: connection_2_source_name
 ```
+
+> Previous versions of this package employed two separate, mutually exclusive variables for unioning: `youtube_analytics_union_schemas` and `youtube_analytics_union_databases`. While these variables are still supported, `youtube_analytics_sources` is the recommended variable to configure.
+
+#### Optional: Incorporate unioned sources into DAG
+
+If you use [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt#transformationsfordbtcore) and are unioning multiple Youtube Analytics connections, you can define your sources in a property `.yml` file, [using this as a template](https://github.com/fivetran/dbt_youtube_analytics/blob/main/models/staging/src_youtube_analytics.yml). Set the variable `has_defined_sources: true` under the Youtube Analytics namespace in your `dbt_project.yml`. Otherwise, your Youtube Analytics connections won't appear in your DAG. See the `union_connections` macro [documentation](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#optional-union-connections-defined-sources-configuration) for full configuration details.
 
 ### Disabling Demographics Report
 This packages assumes you are syncing the YouTube `channel_demographics_a1` report. If you are _not_ syncing this report, you may add the below configuration to your `dbt_project.yml` to disable the `stg_youtube__demographics` model and all downstream references.
@@ -97,19 +123,6 @@ vars:
 ```
 
 ### (Optional) Additional configurations
-
-#### Unioning Multiple Youtube Analytics Connections
-If you have multiple Youtube Analytics connections in Fivetran and want to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table(s) into the final models. You will be able to see which source it came from in the `source_relation` column(s) of each model. To use this functionality, you will need to set either (**note that you cannot use both**) the `union_schemas` or `union_databases` variables:
-
-```yml
-# dbt_project.yml
-vars:
-    ##You may set EITHER the schemas variables below
-    youtube_analytics_union_schemas: ['youtube_analytics_one','youtube_analytics_two']
-
-    ##Or may set EITHER the databases variables below
-    youtube_analytics_union_databases: ['youtube_analytics_one','youtube_analytics_two']
-```
 
 #### Change the build schema
 By default, this package will build the YouTube Analytics staging models within a schema titled (`<target_schema>` + `_youtube_source`) and the YouTube Analytics final models within a schema titled (`<target_schema>` + `_youtube`) in your target database. If this is not where you would like your modeled YouTube Analytics data to be written to, add the following configuration to your `dbt_project.yml` file:
@@ -131,6 +144,14 @@ If an individual source table has a different name than the package expects, add
 # dbt_project.yml
 vars:
     youtube_analytics_<default_source_table_name>_identifier: your_table_name 
+```
+
+#### Source casing for case-sensitive destinations
+By default, the package applies case-insensitive comparisons when resolving `source_relation` values. If your destination is case-sensitive and you want downstream transformations to respect the exact casing of your source database and schema names, set the following variable:
+
+```yml
+vars:
+    fivetran_using_source_casing: true
 ```
 
 ### (Optional) Orchestrate your models with Fivetran Transformations for dbt Core™
