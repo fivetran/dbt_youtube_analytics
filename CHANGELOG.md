@@ -1,3 +1,11 @@
+# dbt_youtube_analytics v1.2.1
+
+[PR #37](https://github.com/fivetran/dbt_youtube_analytics/pull/37) includes the following updates:
+
+## Feature Updates
+- Adds DuckDB as a supported destination.
+
+
 # dbt_youtube_analytics v1.2.0
 
 [PR #35](https://github.com/fivetran/dbt_youtube_analytics/pull/35) includes the following updates:
