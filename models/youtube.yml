@@ -3,6 +3,12 @@ version: 2
 models:
   - name: youtube__video_report
     description: Each record represents the daily aggregation of your YouTube video performance.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - daily_video_id
     columns:
       - name: daily_video_id
         description: Unique identifier which represents a composite key made up of the date_day and video_id.
@@ -55,6 +61,13 @@ models:
 
   - name: youtube__age_demographics_pivot
     description: Each record represents a daily video view percentage with the age ranges pivoted out for quicker analysis.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - video_id
     columns:
       - name: date_day
         description: The date the video was viewed
@@ -89,6 +102,16 @@ models:
 
   - name: youtube__demographics_report
     description: Each record represents a daily video view percentage by gender, age, and country.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - video_id
+              - age_group
+              - country_code
+              - gender
     columns:
       - name: date_day
         description: The date the video was viewed
@@ -121,6 +144,13 @@ models:
 
   - name: youtube__gender_demographics_pivot
     description: Each record represents a daily video view percentage with the gender options pivoted out for quicker analysis.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - video_id
     columns:
       - name: date_day
         description: The date the video was viewed
@@ -149,6 +179,12 @@ models:
 
   - name: youtube__video_metadata
     description: Each record represents an individual video enriched with metadata.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - video_id
     columns:
       - name: video_id
         description: Unique identifier of the video
