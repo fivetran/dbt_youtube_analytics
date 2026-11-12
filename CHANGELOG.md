@@ -1,3 +1,10 @@
+# dbt_youtube_analytics v1.2.2
+
+[PR #40](https://github.com/fivetran/dbt_youtube_analytics/pull/40) includes the following updates:
+
+## Bug Fix
+- Fixes `dbt compile` on a new schema for the `int_youtube__age_pivot`, `int_youtube__gender_pivot`, `youtube__age_demographics_pivot`, and `youtube__gender_demographics_pivot` models. These models query `stg_youtube__channel_demographics` at compile time, which fails when the table does not exist yet. The query now runs only during `dbt run` and `dbt build`.
+
 # dbt_youtube_analytics v1.2.1
 
 [PR #37](https://github.com/fivetran/dbt_youtube_analytics/pull/37) includes the following updates:

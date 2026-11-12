@@ -1,5 +1,6 @@
 -- depends_on: {{ ref('stg_youtube__channel_demographics') }}
 {{ config(enabled=var('youtube__using_channel_demographics', true)) }}
+{%- set age_columns = (dbt_utils.get_column_values(table=ref('stg_youtube__channel_demographics'), column='age_group') or []) if execute and flags.WHICH in ('run', 'build') else [] -%}
 
 with age_pivot as (
 
@@ -11,7 +12,6 @@ with age_pivot as (
     select *
     from {{ ref('youtube__video_metadata') }}
 
-{% set age_columns = dbt_utils.get_column_values( ref('stg_youtube__channel_demographics'), 'age_group') %}
 ), final as (
 
     select
