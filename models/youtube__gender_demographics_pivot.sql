@@ -1,6 +1,7 @@
 -- depends_on: {{ ref('stg_youtube__channel_demographics') }}
 
 {{ config(enabled=var('youtube__using_channel_demographics', true)) }}
+{%- set gender_columns = (dbt_utils.get_column_values(table=ref('stg_youtube__channel_demographics'), column='gender') or []) if execute and flags.WHICH in ('run', 'build') else [] -%}
 
 with gender_pivot as (
 
@@ -12,7 +13,6 @@ with gender_pivot as (
     select *
     from {{ ref('youtube__video_metadata') }}
 
-{% set gender_columns = dbt_utils.get_column_values( ref('stg_youtube__channel_demographics'), 'gender') %}
 ), final as (
 
     select
