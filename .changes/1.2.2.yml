@@ -1,7 +1,9 @@
 version: 1.2.2
 pr_number: 40
 bug_fixes:
-- description: Fixes `dbt compile` on a new schema for the `int_youtube__age_pivot`, `int_youtube__gender_pivot`, `youtube__age_demographics_pivot`, and `youtube__gender_demographics_pivot` models. These models query `stg_youtube__channel_demographics` at compile time, which fails when the table does not exist yet. The query now runs only during `dbt run` and `dbt build`.
-under_the_hood:
-- description: Adds `dbt_utils.unique_combination_of_columns` tests to the staging and end models. The tests use the `arguments` syntax introduced in dbt v1.10, which the new v1.11.0 minimum supports.
+- description: Fixes `dbt compile` on a new schema for the `int_youtube__age_pivot`,
+    `int_youtube__gender_pivot`, `youtube__age_demographics_pivot`, and `youtube__gender_demographics_pivot`
+    models. These models query `stg_youtube__channel_demographics` at compile time,
+    which fails when the table does not exist yet. The query now runs only during
+    `dbt run` and `dbt build`.
 date: '2026-11-12'
