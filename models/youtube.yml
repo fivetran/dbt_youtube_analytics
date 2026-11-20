@@ -12,7 +12,7 @@ models:
     columns:
       - name: daily_video_id
         description: Unique identifier which represents a composite key made up of the date_day and video_id.
-        tests: 
+        data_tests: 
           - not_null
       - name: date_day
         description: The date the video was viewed
@@ -188,7 +188,7 @@ models:
     columns:
       - name: video_id
         description: Unique identifier of the video
-        tests:
+        data_tests:
           - not_null
       - name: _fivetran_synced
         description: Timestamp of when the record was synced by Fivetran
